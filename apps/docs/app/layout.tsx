@@ -1,4 +1,6 @@
 import { Layout } from "components/Layout";
+import clsx from "clsx";
+import { TailwindIndicator } from "components/TailwindIndicator";
 import "./globals.css";
 
 export default function RootLayout({
@@ -13,8 +15,9 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
-        <Layout>{children}</Layout>
+      <body className="antialiased text-slate-500 dark:text-slate-400">
+        <TailwindIndicator />
+        {children}
       </body>
     </html>
   );

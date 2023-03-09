@@ -1,3 +1,4 @@
+"use client";
 import { siteConfig } from "site.config";
 export default function Head() {
   return (
