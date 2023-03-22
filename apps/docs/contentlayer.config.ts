@@ -20,48 +20,24 @@ import floatingUILightTheme from "./assets/floating-ui-light-theme.json";
 import floatingUITheme from "./assets/floating-ui-theme.json";
 
 const options = {
-  theme: floatingUILightTheme,
-  tokensMap: {
-    objectKey: "meta.object-literal.key",
-    function: "entity.name.function",
-    param: "variable.parameter",
-    const: "variable.other.constant",
-    class: "support.class",
+  getHighlighter: async () => {
+    const theme = await loadTheme(
+      path.join(process.cwd(), "assets/vscode-theme.json")
+    );
+    return await getHighlighter({ theme });
   },
-  onVisitLine(node: {
-    children: string | any[];
-    properties: { className: string[] };
-  }) {
+  onVisitLine(node) {
+    // Prevent lines from collapsing in `display: grid` mode, and allow empty
+    // lines to be copy/pasted
     if (node.children.length === 0) {
       node.children = [{ type: "text", value: " " }];
     }
-    node.properties.className = ["line"];
   },
-  onVisitHighlightedLine(node: { properties: { className: string[] } }) {
-    node.properties.className = ["line", "line--highlighted"];
+  onVisitHighlightedLine(node) {
+    node.properties.className.push("line--highlighted");
   },
-  onVisitHighlightedWord(
-    node: {
-      properties: { [x: string]: any; className: string[]; style: string };
-      children: { properties: { style: string } }[];
-    },
-    id: any
-  ) {
-    node.properties.className = ["word"];
-
-    if (id) {
-      // If the word spans across syntax boundaries (e.g. punctuation), remove
-      // colors from the child nodes.
-      if (node.properties["data-rehype-pretty-code-wrapper"]) {
-        node.children.forEach(
-          (childNode: { properties: { style: string } }) => {
-            childNode.properties.style = "";
-          }
-        );
-      }
-      node.properties.style = "";
-      node.properties["data-word-id"] = id;
-    }
+  onVisitHighlightedWord(node) {
+    node.properties.className = ["word--highlighted"];
   },
 };
 

@@ -19,7 +19,7 @@ function CopyButton({ code }: { code: string }) {
   }, [state, i]);
 
   return (
-    <div className="absolute top-1 right-5 flex -mr-2">
+    <div className="absolute top-1 right-5 -mr-2 flex">
       <button
         type="button"
         className={clsx("", {
@@ -41,7 +41,7 @@ function CopyButton({ code }: { code: string }) {
           strokeLinecap="round"
           strokeLinejoin="round"
           aria-hidden="true"
-          className="w-8 h-8"
+          className="h-8 w-8"
         >
           <path d="M13 10.75h-1.25a2 2 0 0 0-2 2v8.5a2 2 0 0 0 2 2h8.5a2 2 0 0 0 2-2v-8.5a2 2 0 0 0-2-2H19" />
           <path d="M18 12.25h-4a1 1 0 0 1-1-1v-1.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1.5a1 1 0 0 1-1 1ZM13.75 16.25h4.5M13.75 19.25h4.5" />
@@ -54,7 +54,7 @@ const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={clsx(
-        "text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200",
+        "text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-200 sm:text-4xl",
         className
       )}
       {...props}
@@ -192,7 +192,7 @@ const components = {
     return (
       <pre
         className={clsx(
-          "relative rounded-md p-4 text-sm leading-6 text-slate-50 flex ligatures-none my-5 before:content-[attr(data-language)]  before:absolute before:top-[0.2rem] before:right-[0.6rem]",
+          "ligatures-none relative my-5 flex rounded-md bg-black p-4 text-sm leading-6 text-slate-50  before:absolute before:top-[0.2rem] before:right-[0.6rem] before:content-[attr(data-language)]",
           className
         )}
         {...props}
