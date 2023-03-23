@@ -9,7 +9,7 @@ import Link from "next/link";
 import React from "react";
 import { usePathname, useSelectedLayoutSegments } from "next/navigation";
 import clsx from "clsx";
-import { MDX } from "components/MDX";
+import { MDX } from "components/MDX/MDX";
 export interface NpmCommands {
   __npmCommand__?: string;
   __yarnCommand__?: string;
@@ -42,12 +42,12 @@ function Doclsxav() {
     });
   });
   return (
-    <ScrollArea.Root className="w-52 h-full overflow-hidden">
-      <ScrollArea.Viewport className="w-full h-full">
+    <ScrollArea.Root className="h-full w-52 overflow-hidden">
+      <ScrollArea.Viewport className="h-full w-full">
         <div style={{ padding: "15px 20px" }}>
           {nav.map(({ children, title }) => (
             <React.Fragment key={title}>
-              <div className="mb-8 lg:mb-3 font-semibold text-slate-900 dark:text-slate-200 mt-5">
+              <div className="mb-8 mt-5 font-semibold text-slate-900 dark:text-slate-200 lg:mb-3">
                 {title}
               </div>
               <ol>
@@ -56,9 +56,9 @@ function Doclsxav() {
                     <Link
                       href={doc.url}
                       className={clsx(
-                        "block border-l pl-4 -ml-px border-transparent hover:border-slate-400 dark:hover:border-slate-500 text-slate-700 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-300",
+                        "-ml-px block border-l border-transparent pl-4 text-slate-700 hover:border-slate-400 hover:text-slate-900 dark:text-slate-400 dark:hover:border-slate-500 dark:hover:text-slate-300",
                         {
-                          "text-sky-500 border-current font-semibold dark:text-sky-400 border-sky-400":
+                          "border-current border-sky-400 font-semibold text-sky-500 dark:text-sky-400":
                             pathname === doc.url,
                         }
                       )}
@@ -76,7 +76,7 @@ function Doclsxav() {
         <ScrollArea.Thumb className="" />
       </ScrollArea.Scrollbar>
       <ScrollArea.Scrollbar className="" orientation="horizontal">
-        <ScrollArea.Thumb className="flex-1 relative" />
+        <ScrollArea.Thumb className="relative flex-1" />
       </ScrollArea.Scrollbar>
       <ScrollArea.Corner className="" />
     </ScrollArea.Root>
@@ -120,11 +120,11 @@ export default function DocsPage({ params }: DocPageProps) {
   return (
     <div>
       <div className="max-w-8xl mx-auto px-4 sm:px-6 md:px-8">
-        <div className="hidden lg:block fixed z-20 inset-0 top-[3.8125rem] left-[max(0px,calc(50%-45rem))] right-auto w-[19.5rem] pb-10 px-8 overflow-y-auto">
+        <div className="fixed inset-0 top-[3.8125rem] left-[max(0px,calc(50%-45rem))] right-auto z-20 hidden w-[19.5rem] overflow-y-auto px-8 pb-10 lg:block">
           <Doclsxav />
         </div>
         <div className="lg:pl-[19.5rem]">
-          <div className="max-w-3xl mx-auto pt-10 xl:max-w-none xl:ml-0 xl:mr-[15.5rem] xl:pr-16">
+          <div className="mx-auto max-w-3xl pt-10 xl:ml-0 xl:mr-[15.5rem] xl:max-w-none xl:pr-16">
             <MDX code={doc.body.code} />
           </div>
         </div>

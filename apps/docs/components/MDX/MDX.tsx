@@ -19,14 +19,16 @@ function CopyButton({ code }: { code: string }) {
   }, [state, i]);
 
   return (
-    <div className="absolute top-1 right-5 -mr-2 flex">
+    <div className="absolute top-[1.25rem] right-2 inline-block  border-none text-slate-300 opacity-50 group-hover:visible group-hover:bg-transparent group-hover:opacity-100">
       <button
         type="button"
-        className={clsx("", {
-          "text-slate-500 hover:text-slate-400": state === "idle",
+        className={clsx({
+          "text-slate-500 group-hover:text-slate-400": state === "idle",
           "text-sky-400": state === "copied",
         })}
         onClick={() => {
+          console.log("code", code);
+          return;
           navigator.clipboard
             .writeText(redent(code.replace(/^[+>-]/gm, " ")))
             .then(() => {
@@ -189,25 +191,35 @@ const components = {
     />
   ),
   pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => {
+    console.log("pre", props);
+
     return (
-      <pre
-        className={clsx(
-          "ligatures-none relative my-5 flex rounded-md bg-black p-4 text-sm leading-6 text-slate-50  before:absolute before:top-[0.2rem] before:right-[0.6rem] before:content-[attr(data-language)]",
-          className
-        )}
-        {...props}
-      />
+      <div className="group relative">
+        <pre
+          className={clsx(
+            "ligatures-none relative my-5 flex rounded-md bg-black p-4 text-sm leading-6 text-slate-50  before:absolute before:top-[0.2rem] before:right-[0.6rem] before:content-[attr(data-language)]",
+            className
+          )}
+          {...props}
+        />
+      </div>
     );
   },
-  // code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
-  //   console.log("props", props);
-  //   return (
-  //     <div className="relative z-10 col-span-3 bg-slate-800 rounded-xl shadow-lg xl:ml-0 dark:shadow-none dark:ring-1 dark:ring-inset dark:ring-white/10 py-2 px-5 w-full">
-  //       <code className={clsx("flex-none min-w-full", className)} {...props} />
-  //       <CopyButton code={props.children as string}></CopyButton>
-  //     </div>
-  //   );
-  // },
+  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
+    console.log("code", props);
+    return (
+      <div className="relative">
+        <code
+          className={clsx(
+            // "relative rounded bg-slate-100 py-[0.2rem] px-[0.3rem] font-mono text-sm font-semibold text-slate-900 dark:bg-slate-800 dark:text-slate-400",
+            className
+          )}
+          {...props}
+        />
+        <CopyButton code={props.children as string}></CopyButton>
+      </div>
+    );
+  },
   Image,
   CodeBlockWrapper: ({ ...props }) => (
     <pre className="rounded-md border border-slate-100" {...props} />
