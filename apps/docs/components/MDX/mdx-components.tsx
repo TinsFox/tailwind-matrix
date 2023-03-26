@@ -1,57 +1,8 @@
 import clsx from "clsx";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import redent from "redent";
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import { Pre } from "./pre";
 
-function CopyButton({ code }: { code: string }) {
-  let [{ state, i }, setState] = useState({ state: "idle", i: 0 });
-
-  useEffect(() => {
-    if (state === "copied") {
-      let handle = window.setTimeout(() => {
-        setState({ state: "idle", i: i + 1 });
-      }, 1500);
-      return () => {
-        window.clearTimeout(handle);
-      };
-    }
-  }, [state, i]);
-
-  return (
-    <div className="absolute top-[1.25rem] right-2 inline-block  border-none text-slate-300 opacity-50 group-hover:visible group-hover:bg-transparent group-hover:opacity-100">
-      <button
-        type="button"
-        className={clsx({
-          "text-slate-500 group-hover:text-slate-400": state === "idle",
-          "text-sky-400": state === "copied",
-        })}
-        onClick={() => {
-          console.log("code", code);
-          return;
-          navigator.clipboard
-            .writeText(redent(code.replace(/^[+>-]/gm, " ")))
-            .then(() => {
-              setState({ state: "copied", i: i + 1 });
-            });
-        }}
-      >
-        <svg
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-          className="h-8 w-8"
-        >
-          <path d="M13 10.75h-1.25a2 2 0 0 0-2 2v8.5a2 2 0 0 0 2 2h8.5a2 2 0 0 0 2-2v-8.5a2 2 0 0 0-2-2H19" />
-          <path d="M18 12.25h-4a1 1 0 0 1-1-1v-1.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1.5a1 1 0 0 1-1 1ZM13.75 16.25h4.5M13.75 19.25h4.5" />
-        </svg>
-      </button>
-    </div>
-  );
-}
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
@@ -190,21 +141,7 @@ const components = {
       {...props}
     />
   ),
-  pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => {
-    console.log("pre", props);
-
-    return (
-      <div className="group relative">
-        <pre
-          className={clsx(
-            "ligatures-none relative my-5 flex rounded-md bg-black p-4 text-sm leading-6 text-slate-50  before:absolute before:top-[0.2rem] before:right-[0.6rem] before:content-[attr(data-language)]",
-            className
-          )}
-          {...props}
-        />
-      </div>
-    );
-  },
+  pre: Pre,
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
     console.log("code", props);
     return (
@@ -216,7 +153,7 @@ const components = {
           )}
           {...props}
         />
-        <CopyButton code={props.children as string}></CopyButton>
+        {/* <CopyButton code={props.children as string}></CopyButton> */}
       </div>
     );
   },

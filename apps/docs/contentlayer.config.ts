@@ -1,7 +1,7 @@
 import { makeSource } from "contentlayer/source-files";
 import rehypePrettyCode from "rehype-pretty-code";
 import { getHighlighter, loadTheme } from "shiki";
-import { rehypeCopyCode } from "rehype/rehypeCopyCode";
+import { rehypeCopyCode } from "./rehype/rehypeCopyCode";
 import * as documentTypes from "./contentlayer";
 import path from "path";
 import remarkSmartypants from "remark-smartypants";
