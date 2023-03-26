@@ -1,20 +1,17 @@
-import { IndexHeader } from "components/IndexHeader";
-
 export default function Home() {
   return (
     <>
-      <IndexHeader></IndexHeader>
-      <section className="text-center px-8 mt-20 sm:mt-32 md:mt-40">
-        <h2 className="text-slate-900 text-4xl tracking-tight font-extrabold sm:text-5xl dark:text-white">
+      <section className="mt-20 px-8 text-center sm:mt-32 md:mt-40">
+        <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
           “Best practices” don’t actually work.
         </h2>
         <figure>
           <blockquote>
-            <p className="mt-6 max-w-3xl mx-auto text-lg">
+            <p className="mx-auto mt-6 max-w-3xl text-lg">
               I’ve written{" "}
               <a
                 href="https://adamwathan.me/css-utility-classes-and-separation-of-concerns/"
-                className="text-sky-500 font-semibold dark:text-sky-400"
+                className="font-semibold text-sky-500 dark:text-sky-400"
               >
                 a few thousand words
               </a>{" "}
@@ -29,12 +26,12 @@ export default function Home() {
             <img
               src={"/img/adam.jpg"}
               alt=""
-              className="w-14 h-14 rounded-full"
+              className="h-14 w-14 rounded-full"
               loading="lazy"
               decoding="async"
             />
             <div>
-              <div className="text-slate-900 font-semibold dark:text-white">
+              <div className="font-semibold text-slate-900 dark:text-white">
                 Adam Wathan
               </div>
               <div className="mt-0.5 text-sm leading-6">

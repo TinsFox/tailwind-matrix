@@ -40,7 +40,7 @@ export function Highlight({
   showLines,
   ...props
 }: HighlightProps) {
-  const shouldHighlightLine = calculateLinesToHighlight(metastring);
+  const shouldHighlightLine = calculateLinesToHighlight(metastring as string);
 
   return (
     <BaseHighlight

@@ -4,9 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { INavConfig } from "site.config";
 import { Logo } from "./Logo";
-import { SearchButton } from "./Search";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Header({
@@ -31,43 +29,43 @@ export function Header({
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
-      window.removeEventListener("scroll", onScroll, { passive: true });
+      window.removeEventListener("scroll", onScroll, true);
     };
   }, [isOpaque]);
   return (
     <>
       <div
         className={clsx(
-          "sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50/[0.06]",
+          "sticky top-0 z-40 w-full flex-none backdrop-blur transition-colors duration-500 dark:border-slate-50/[0.06] lg:z-50 lg:border-b lg:border-slate-900/10",
           isOpaque
-            ? "bg-white supports-backdrop-blur:bg-white/95 dark:bg-slate-900/75"
-            : "bg-white/95 supports-backdrop-blur:bg-white/60 dark:bg-transparent"
+            ? "supports-backdrop-blur:bg-white/95 bg-white dark:bg-slate-900/75"
+            : "supports-backdrop-blur:bg-white/60 bg-white/95 dark:bg-transparent"
         )}
       >
         <div className="max-w-8xl mx-auto">
           <div
             className={clsx(
-              "py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10",
+              "border-b border-slate-900/10 py-4 dark:border-slate-300/10 lg:border-0 lg:px-8",
               hasNav ? "mx-4 lg:mx-0" : "px-4"
             )}
           >
             <div className="relative flex items-center">
               <Link
                 href="/brand"
-                className="mr-3 flex-none w-[2.0625rem] overflow-hidden md:w-auto"
+                className="mr-3 w-[2.0625rem] flex-none overflow-hidden md:w-auto"
                 onContextMenu={(e) => {
                   e.preventDefault();
                   router.push("/brand");
                 }}
               >
                 <span className="sr-only">Tailwind CSS home page</span>
-                <Logo className="w-auto h-5" />
+                <Logo className="h-5 w-auto" />
               </Link>
-              <div className="relative hidden lg:flex items-center ml-auto">
-                <nav className="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
+              <div className="relative ml-auto hidden items-center lg:flex">
+                <nav className="text-sm font-semibold leading-6 text-slate-700 dark:text-slate-200">
                   <ul className="flex space-x-8">{/* <NavItems /> */}</ul>
                 </nav>
-                <div className="flex items-center border-l border-slate-200 ml-6 pl-6 dark:border-slate-800">
+                <div className="ml-6 flex items-center border-l border-slate-200 pl-6 dark:border-slate-800">
                   <ThemeToggle panelClassName="mt-8" />
                   <a
                     href="https://github.com/tailwindlabs/tailwindcss"
@@ -76,7 +74,7 @@ export function Header({
                     <span className="sr-only">Tailwind CSS on GitHub</span>
                     <svg
                       viewBox="0 0 16 16"
-                      className="w-5 h-5"
+                      className="h-5 w-5"
                       fill="currentColor"
                       aria-hidden="true"
                     >
@@ -85,22 +83,6 @@ export function Header({
                   </a>
                 </div>
               </div>
-              <SearchButton className="ml-auto text-slate-500 w-8 h-8 -my-1 flex items-center justify-center hover:text-slate-600 lg:hidden dark:text-slate-400 dark:hover:text-slate-300">
-                <span className="sr-only">Search</span>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="m19 19-3.5-3.5" />
-                  <circle cx="11" cy="11" r="6" />
-                </svg>
-              </SearchButton>
             </div>
           </div>
         </div>

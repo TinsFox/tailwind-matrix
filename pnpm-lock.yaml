@@ -164,6 +164,9 @@ importers:
       '@types/prismjs':
         specifier: ^1.26.0
         version: 1.26.0
+      '@types/react-table':
+        specifier: ^7.7.14
+        version: 7.7.14
       '@typescript-eslint/parser':
         specifier: ^5.56.0
         version: 5.56.0(eslint@8.34.0)(typescript@4.9.5)
@@ -3245,6 +3248,12 @@ packages:
 
   /@types/react-dom@18.0.7:
     resolution: {integrity: sha512-HaXc+BbqAZE1RdsK3tC8SbkFy6UL2xF76lT9rQs5JkPrJg3rWA3Ou/Lhw3YJQzEDkBpmJ79nBsfnd05WrBd2QQ==}
+    dependencies:
+      '@types/react': 18.0.28
+    dev: true
+
+  /@types/react-table@7.7.14:
+    resolution: {integrity: sha512-TYrv7onCiakaG1uAu/UpQ9FojNEt/4/ht87EgJQaEGFoWV606ZLWUZAcUHzMxgc3v1mywP1cDyz3qB4ho3hWOw==}
     dependencies:
       '@types/react': 18.0.28
     dev: true

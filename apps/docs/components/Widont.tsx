@@ -1,3 +1,3 @@
-export function Widont({ children }) {
-  return children.replace(/ ([^ ]+)$/, '\u00A0$1')
+export function Widont({ children }: { children: string }) {
+  return children.replace(/ ([^ ]+)$/, "\u00A0$1");
 }

@@ -1,7 +1,7 @@
 "use client";
 import clsx from "clsx";
 import { useRef } from "react";
-import { CopyButton } from "./copy-to-clipboard";
+import { CopyToClipboard } from "./copy-to-clipboard";
 
 export const Pre = ({
   className,
@@ -19,11 +19,6 @@ export const Pre = ({
         )}
         ref={preRef}
         {...props}
-      />
-      <CopyButton
-        getValue={() =>
-          preRef.current?.querySelector("code")?.textContent || ""
-        }
       />
     </div>
   );

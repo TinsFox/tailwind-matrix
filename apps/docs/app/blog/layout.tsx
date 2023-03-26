@@ -1,7 +1,5 @@
 "use client";
 import clsx from "clsx";
-import { NewsletterForm } from "components/NewsletterForm";
-import { Widont } from "components/Widont";
 import Link from "next/link";
 import { allBlogs } from "contentlayer/generated";
 interface DocsLayoutProps {
@@ -10,30 +8,16 @@ interface DocsLayoutProps {
 
 export default function DocLayout({ children }: DocsLayoutProps) {
   return (
-    <main className="max-w-[52rem] mx-auto px-4 pb-28 sm:px-6 md:px-8 xl:px-12 lg:max-w-6xl">
-      {/* <header className="py-16 sm:text-center">
-        <h1 className="mb-4 text-3xl sm:text-4xl tracking-tight text-slate-900 font-extrabold dark:text-slate-200">
-          Latest Updates
-        </h1>
-        <p className="text-lg text-slate-700 dark:text-slate-400">
-          <Widont>
-            All the latest Tailwind CSS news, straight from the team.
-          </Widont>
-        </p>
-        <section className="mt-3 max-w-sm sm:mx-auto sm:px-4">
-          <h2 className="sr-only">Sign up for our newsletter</h2>
-          <NewsletterForm action="https://app.convertkit.com/forms/3181837/subscriptions" />
-        </section>
-      </header> */}
-      <div className="relative sm:pb-12 sm:ml-[calc(2rem+1px)] md:ml-[calc(3.5rem+1px)] lg:ml-[max(calc(14.5rem+1px),calc(100%-48rem))]">
-        <div className="hidden absolute top-3 bottom-0 right-full mr-7 md:mr-[3.25rem] w-px bg-slate-200 dark:bg-slate-800 sm:block" />
+    <main className="mx-auto max-w-[52rem] px-4 pb-28 sm:px-6 md:px-8 lg:max-w-6xl xl:px-12">
+      <div className="relative sm:ml-[calc(2rem+1px)] sm:pb-12 md:ml-[calc(3.5rem+1px)] lg:ml-[max(calc(14.5rem+1px),calc(100%-48rem))]">
+        <div className="absolute top-3 bottom-0 right-full mr-7 hidden w-px bg-slate-200 dark:bg-slate-800 sm:block md:mr-[3.25rem]" />
         <div className="space-y-16">
           {allBlogs.map(({ slug, title }) => (
-            <article key={slug} className="relative group">
-              <div className="absolute -inset-y-2.5 -inset-x-4 md:-inset-y-4 md:-inset-x-6 sm:rounded-2xl group-hover:bg-slate-50/70 dark:group-hover:bg-slate-800/50" />
+            <article key={slug} className="group relative">
+              <div className="absolute -inset-y-2.5 -inset-x-4 group-hover:bg-slate-50/70 dark:group-hover:bg-slate-800/50 sm:rounded-2xl md:-inset-y-4 md:-inset-x-6" />
               <svg
                 viewBox="0 0 9 9"
-                className="hidden absolute right-full mr-6 top-2 text-slate-200 dark:text-slate-600 md:mr-12 w-[calc(0.5rem+1px)] h-[calc(0.5rem+1px)] overflow-visible sm:block"
+                className="absolute right-full top-2 mr-6 hidden h-[calc(0.5rem+1px)] w-[calc(0.5rem+1px)] overflow-visible text-slate-200 dark:text-slate-600 sm:block md:mr-12"
               >
                 <circle
                   cx="4.5"
@@ -45,10 +29,10 @@ export default function DocLayout({ children }: DocsLayoutProps) {
                 />
               </svg>
               <div className="relative">
-                <h3 className="text-base font-semibold tracking-tight text-slate-900 dark:text-slate-200 pt-8 lg:pt-0">
+                <h3 className="pt-8 text-base font-semibold tracking-tight text-slate-900 dark:text-slate-200 lg:pt-0">
                   {title}
                 </h3>
-                <div className="mt-2 mb-4 prose prose-slate prose-a:relative prose-a:z-10 dark:prose-dark line-clamp-2">
+                <div className="prose prose-slate prose-a:relative prose-a:z-10 dark:prose-dark line-clamp-2 mt-2 mb-4">
                   {/* <Component /> */}
                   123
                 </div>
@@ -68,16 +52,16 @@ export default function DocLayout({ children }: DocsLayoutProps) {
               </div>
               <Link
                 href={`/blog/${slug}`}
-                className="flex items-center text-sm text-sky-500 font-medium"
+                className="flex items-center text-sm font-medium text-sky-500"
               >
                 <>
-                  <span className="absolute -inset-y-2.5 -inset-x-4 md:-inset-y-4 md:-inset-x-6 sm:rounded-2xl" />
+                  <span className="absolute -inset-y-2.5 -inset-x-4 sm:rounded-2xl md:-inset-y-4 md:-inset-x-6" />
                   <span className="relative">
                     Read more
                     <span className="sr-only">,{/* {meta.title} */}</span>
                   </span>
                   <svg
-                    className="relative mt-px overflow-visible ml-2.5 text-sky-300 dark:text-sky-700"
+                    className="relative mt-px ml-2.5 overflow-visible text-sky-300 dark:text-sky-700"
                     width="3"
                     height="6"
                     viewBox="0 0 3 6"
@@ -96,13 +80,5 @@ export default function DocLayout({ children }: DocsLayoutProps) {
         </div>
       </div>
     </main>
-    // <div className="flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
-    //   {/* <aside className="fixed top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto border-r border-r-slate-100 dark:border-r-slate-700 md:sticky md:block">
-    //     <ScrollArea className="pr-6 lg:py-10">
-    //       <DocsSidebarNav items={docsConfig.sidebarNav} />
-    //     </ScrollArea>
-    //   </aside> */}
-    //   {children}
-    // </div>
   );
 }
