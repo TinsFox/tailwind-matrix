@@ -6,6 +6,7 @@ import * as documentTypes from "./contentlayer";
 import path from "path";
 import remarkSmartypants from "remark-smartypants";
 import { visit } from "unist-util-visit";
+import remarkSlug from "remark-slug";
 
 const options = {
   getHighlighter: async () => {
@@ -36,6 +37,7 @@ export default makeSource({
   documentTypes: documentTypes,
   mdx: {
     remarkPlugins: [remarkSmartypants],
-    rehypePlugins: [[rehypePrettyCode, options], rehypeCopyCode],
+    // [rehypePrettyCode, options], rehypeCopyCode,
+    rehypePlugins: [remarkSlug],
   },
 });

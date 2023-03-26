@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
-import { Pre } from "./pre";
+import { CodeBlock } from "./codeblock/codeblock";
 
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -141,9 +141,8 @@ const components = {
       {...props}
     />
   ),
-  pre: Pre,
+  pre: CodeBlock,
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
-    console.log("code", props);
     return (
       <div className="relative">
         <code
@@ -153,7 +152,6 @@ const components = {
           )}
           {...props}
         />
-        {/* <CopyButton code={props.children as string}></CopyButton> */}
       </div>
     );
   },

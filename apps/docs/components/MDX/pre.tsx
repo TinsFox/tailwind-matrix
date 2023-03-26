@@ -7,9 +7,8 @@ export const Pre = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLPreElement>) => {
-  console.log("pre", props);
   const preRef = useRef<HTMLPreElement | null>(null);
-  console.log("code", preRef.current);
+  console.log("Pre props", props);
 
   return (
     <div className="group relative">
