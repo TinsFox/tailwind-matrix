@@ -1,6 +1,9 @@
+import { Header } from "components/header/Header";
+
 export default function Home() {
   return (
     <>
+      <Header />
       <section className="mt-20 px-8 text-center sm:mt-32 md:mt-40">
         <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
           “Best practices” don’t actually work.

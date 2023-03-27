@@ -1,7 +1,7 @@
 "use client";
 
 import { allDocs } from "contentlayer/generated";
-import { Header } from "components/Header";
+import { Header } from "components/header/Header";
 interface DocsLayoutProps {
   children: React.ReactNode;
 }
