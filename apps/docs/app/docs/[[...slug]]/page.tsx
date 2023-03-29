@@ -9,7 +9,7 @@ import Link from "next/link";
 import React from "react";
 import { usePathname, useSelectedLayoutSegments } from "next/navigation";
 import clsx from "clsx";
-import { MDX } from "components/MDX/mdx-components";
+import { MDX } from "components/mdx/mdx-components";
 export interface NpmCommands {
   __npmCommand__?: string;
   __yarnCommand__?: string;

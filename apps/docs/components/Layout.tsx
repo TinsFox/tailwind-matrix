@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { Footer } from "./Footer";
+import { Footer } from "./footer";
 import { Header } from "./header/Header";
 import styles from "./index.module.css";
 

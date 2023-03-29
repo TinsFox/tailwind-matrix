@@ -1,7 +1,9 @@
 import React from "react";
-export default {
-  logo: <span>My Nextra Documentation</span>,
+
+const Config = {
+  logo: "Tailwind Matrix",
   project: {
-    link: "https://github.com/shuding/nextra",
+    link: "https://github.com/TinsFox/tailwind-matrix",
   },
 };
+export default Config;

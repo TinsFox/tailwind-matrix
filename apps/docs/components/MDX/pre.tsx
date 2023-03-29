@@ -1,7 +1,6 @@
 "use client";
 import clsx from "clsx";
 import { useRef } from "react";
-import { CopyToClipboard } from "./copy-to-clipboard";
 
 export const Pre = ({
   className,

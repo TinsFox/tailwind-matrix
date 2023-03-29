@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
-
-import { Pre } from "../pre";
 import { CodeContainer } from "./code-container";
 import { Highlight } from "./highlight";
 import { ReactLiveBlock } from "./react-live-block";
 import theme from "prism-react-renderer/themes/nightOwl";
+import { LiveCode } from "../sandpack";
 
 export function CodeBlock(props: any) {
+  console.log("CodeBlock props", props.live);
   const [isMounted, on] = useState<boolean>(false);
   useEffect(() => {
     on(true);
   }, [on]);
-
+  const { live = false } = props;
   const {
     className,
-    live = true,
     manual,
     render,
     children,
@@ -22,11 +21,14 @@ export function CodeBlock(props: any) {
     ln,
     mountStylesheet = false,
   } = props.children.props;
+  console.log("props.children.props", props.children.props);
+
   const language = className?.replace(/language-/, "");
 
   const _live = live === "true" || live === true;
 
   const rawCode = children?.trim();
+  console.log("_live", _live, rawCode);
 
   const reactLiveBlockProps = {
     rawCode,
@@ -41,6 +43,7 @@ export function CodeBlock(props: any) {
     (language === "jsx" || language === "tsx") &&
     _live === true
   ) {
+    return <LiveCode></LiveCode>;
     return <ReactLiveBlock editable {...reactLiveBlockProps} />;
   }
 
@@ -52,7 +55,6 @@ export function CodeBlock(props: any) {
           language={language}
           theme={theme}
           metastring={ln}
-          showLines={viewlines}
         />
       </CodeContainer>
     </div>
