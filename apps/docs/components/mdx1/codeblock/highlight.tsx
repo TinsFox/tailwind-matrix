@@ -17,6 +17,7 @@ export function Highlight({
   codeString,
   language,
   metastring,
+
   ...props
 }: HighlightProps) {
   return (
@@ -30,15 +31,24 @@ export function Highlight({
         <div className="p-5" style={liveEditorStyle}>
           <pre className={className} style={style}>
             {tokens.map((line, i) => {
-              const lineProps = getLineProps({ line, key: i });
+              const { key, ...rest } = getLineProps({
+                line,
+                key: i,
+              });
               return (
-                <div key={i} {...lineProps}>
-                  <span className="mr-6 select-none text-xs opacity-30">
-                    {i + 1}
-                  </span>
-                  {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token, key })} />
-                  ))}
+                <div key={key} {...rest}>
+                  {line.length > 1 && (
+                    <span className="mr-6 select-none text-xs opacity-30">
+                      {i + 1}
+                    </span>
+                  )}
+                  {line.map((token, key) => {
+                    const { key: tokenKey, ...rest } = getTokenProps({
+                      token,
+                      key,
+                    });
+                    return <span key={tokenKey} {...rest} />;
+                  })}
                 </div>
               );
             })}
