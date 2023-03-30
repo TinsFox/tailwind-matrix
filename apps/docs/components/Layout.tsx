@@ -1,13 +1,6 @@
 "use client";
-import React, { useEffect } from "react";
-import { Footer } from "./footer";
-import { Header } from "./header/Header";
-import styles from "./index.module.css";
-
+import React from "react";
 interface ILayout {}
-import { siteConfig } from "site.config";
-import clsx from "clsx";
-import { ThemeToggle, update } from "./ThemeToggle";
 
 export function Layout({ children }: React.PropsWithChildren<ILayout>) {
   return (

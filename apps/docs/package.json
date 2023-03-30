@@ -67,6 +67,7 @@
     "debounce": "^1.2.1",
     "eslint": "7.32.0",
     "eslint-config-custom": "workspace:*",
+    "eslint-plugin-react": "7.31.8",
     "framer-motion": "^10.0.2",
     "front-matter": "^4.0.2",
     "mini-svg-data-uri": "^1.4.4",

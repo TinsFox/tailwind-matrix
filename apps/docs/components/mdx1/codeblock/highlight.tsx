@@ -17,7 +17,6 @@ export function Highlight({
   codeString,
   language,
   metastring,
-
   ...props
 }: HighlightProps) {
   return (
@@ -34,11 +33,9 @@ export function Highlight({
               const lineProps = getLineProps({ line, key: i });
               return (
                 <div key={i} {...lineProps}>
-                  {line.length > 1 && (
-                    <span className="mr-6 select-none text-xs opacity-30">
-                      {i + 1}
-                    </span>
-                  )}
+                  <span className="mr-6 select-none text-xs opacity-30">
+                    {i + 1}
+                  </span>
                   {line.map((token, key) => (
                     <span key={key} {...getTokenProps({ token, key })} />
                   ))}

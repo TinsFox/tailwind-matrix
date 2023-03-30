@@ -182,6 +182,9 @@ importers:
       eslint-config-custom:
         specifier: workspace:*
         version: link:../../packages/eslint-config-custom
+      eslint-plugin-react:
+        specifier: 7.31.8
+        version: 7.31.8(eslint@8.34.0)
       framer-motion:
         specifier: ^10.0.2
         version: 10.0.2(react-dom@18.2.0)(react@18.2.0)
@@ -5288,7 +5291,6 @@ packages:
       resolve: 2.0.0-next.4
       semver: 6.3.0
       string.prototype.matchall: 4.0.8
-    dev: false
 
   /eslint-plugin-react@7.31.8(eslint@8.35.0):
     resolution: {integrity: sha512-5lBTZmgQmARLLSYiwI71tiGVTLUuqXantZM6vlSY39OaDSV0M7+32K5DnLkmFrwTe+Ksz0ffuLUC91RUviVZfw==}
