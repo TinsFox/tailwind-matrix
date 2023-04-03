@@ -42,6 +42,7 @@ export function Highlight({
                       {i + 1}
                     </span>
                   )}
+                  {/* https://github.com/FormidableLabs/prism-react-renderer/issues/172#issuecomment-1411339364 */}
                   {line.map((token, key) => {
                     const { key: tokenKey, ...rest } = getTokenProps({
                       token,

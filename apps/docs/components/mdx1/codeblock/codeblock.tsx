@@ -4,9 +4,9 @@ import { Highlight } from "./highlight";
 import { ReactLiveBlock } from "./react-live-block";
 import theme from "prism-react-renderer/themes/nightOwl";
 import { LiveCode } from "../sandpack";
+import { CopyToClipboard } from "../copy-to-clipboard";
 
 export function CodeBlock(props: any) {
-  console.log("CodeBlock props", props.live);
   const [isMounted, on] = useState<boolean>(false);
   useEffect(() => {
     on(true);
@@ -21,14 +21,12 @@ export function CodeBlock(props: any) {
     ln,
     mountStylesheet = false,
   } = props.children.props;
-  console.log("props.children.props", props.children.props);
 
   const language = className?.replace(/language-/, "");
 
   const _live = live === "true" || live === true;
 
   const rawCode = children?.trim();
-  console.log("_live", _live, rawCode);
 
   const reactLiveBlockProps = {
     rawCode,
@@ -56,6 +54,7 @@ export function CodeBlock(props: any) {
           theme={theme}
           metastring={ln}
         />
+        <CopyToClipboard code={rawCode}></CopyToClipboard>
       </CodeContainer>
     </div>
   );

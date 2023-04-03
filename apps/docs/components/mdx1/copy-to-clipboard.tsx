@@ -32,7 +32,7 @@ export function CopyToClipboard({ code }: { code: string }) {
   const IconToUse = isCopied ? CheckIcon : CopyIcon;
 
   return (
-    <div className="absolute top-[1.8rem] right-[1rem] inline-block  border-none text-slate-300 opacity-50 group-hover:visible group-hover:bg-transparent group-hover:opacity-100">
+    <div className="invisible absolute top-[1.5rem] right-[1rem]  inline-block border-none text-slate-300 opacity-50 group-hover:visible group-hover:bg-transparent group-hover:opacity-100">
       <button
         type="button"
         className="text-slate-500 group-hover:text-slate-400"

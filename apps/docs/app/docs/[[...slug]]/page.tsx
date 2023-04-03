@@ -10,6 +10,7 @@ import React from "react";
 import { usePathname, useSelectedLayoutSegments } from "next/navigation";
 import clsx from "clsx";
 import { MDX } from "components/mdx1/index1";
+import { TOC } from "components/mdx1/toc";
 export interface NpmCommands {
   __npmCommand__?: string;
   __yarnCommand__?: string;
@@ -47,7 +48,7 @@ function Doclsxav() {
         <div style={{ padding: "15px 20px" }}>
           {nav.map(({ children, title }) => (
             <React.Fragment key={title}>
-              <div className="mb-8 mt-5 font-semibold text-slate-900 dark:text-slate-200 lg:mb-3">
+              <div className="mt-5 mb-8 font-semibold text-slate-900 dark:text-slate-200 lg:mb-3">
                 {title}
               </div>
               <ol>
@@ -84,7 +85,7 @@ function Doclsxav() {
 }
 function TableOfContents() {
   return (
-    <ScrollArea.Root className="fixed right-0 bottom-0 z-10 w-full overflow-x-hidden">
+    <ScrollArea.Root className="fixed bottom-0 right-0 z-10 w-full overflow-x-hidden">
       <ScrollArea.Viewport className="">
         <div style={{ padding: "15px 20px" }}>
           <div className="">Tags</div>
@@ -112,6 +113,7 @@ function TableOfContents() {
 export default function DocsPage({ params }: DocPageProps) {
   const slug = params?.slug?.join("/") || "";
   const doc = allDocs.find((doc) => doc.slugAsParams === slug);
+  console.log("doc", doc);
 
   if (!doc) {
     return <div>Not Found</div>;
@@ -123,12 +125,12 @@ export default function DocsPage({ params }: DocPageProps) {
         <div className="fixed inset-0 top-[3.8125rem] left-[max(0px,calc(50%-45rem))] right-auto z-20 hidden w-[19.5rem] overflow-y-auto px-8 pb-10 lg:block">
           <Doclsxav />
         </div>
-        <div className="lg:pl-[19.5rem]">
+        <div className="relative lg:pl-[19.5rem]">
           <div className="mx-auto max-w-3xl pt-10 xl:ml-0 xl:mr-[15.5rem] xl:max-w-none xl:pr-16">
             <MDX code={doc.body.code} />
           </div>
+          <TOC headings={doc.headings} />
         </div>
-        {/* <TableOfContents /> */}
       </div>
     </div>
   );
