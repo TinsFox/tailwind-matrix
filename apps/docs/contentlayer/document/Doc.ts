@@ -3,7 +3,8 @@ import { bundleMDX } from "mdx-bundler";
 import type * as unified from "unified";
 import { toMarkdown } from "mdast-util-to-markdown";
 import { mdxToMarkdown } from "mdast-util-mdx";
-
+import { log } from "console";
+export type DocHeading = { level: 1 | 2 | 3; title: string };
 export const Doc = defineDocumentType(() => ({
   name: "Docs",
   filePathPattern: `docs/**/*.mdx`,
@@ -53,7 +54,6 @@ export const Doc = defineDocumentType(() => ({
             return opts;
           },
         });
-
         return [{ level: 1, title: doc.title }, ...headings];
       },
     },
@@ -62,6 +62,7 @@ export const Doc = defineDocumentType(() => ({
 const tocPlugin =
   (headings: DocHeading[]): unified.Plugin =>
   () => {
+    console.log("headings", headings);
     return (node: any) => {
       for (const element of node.children.filter(
         (_: any) => _.type === "heading" || _.name === "OptionsTable"

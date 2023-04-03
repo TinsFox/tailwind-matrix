@@ -7,7 +7,7 @@ const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={clsx(
-        "text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-200 sm:text-4xl",
+        "text-3xl font-extrabold tracking-tight text-slate-900  sm:text-4xl",
         className
       )}
       {...props}

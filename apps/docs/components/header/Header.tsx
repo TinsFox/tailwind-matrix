@@ -51,7 +51,7 @@ export function Header({ hasNav = false }: any) {
                 <Logo className="h-5 w-auto" />
               </Link>
               <div className="relative ml-auto hidden items-center lg:flex">
-                <nav className="text-sm font-semibold leading-6 text-slate-700 dark:text-slate-200">
+                <nav className="text-sm font-semibold leading-6 text-slate-700 ">
                   <ul className="flex space-x-8">
                     <NavItems />
                   </ul>

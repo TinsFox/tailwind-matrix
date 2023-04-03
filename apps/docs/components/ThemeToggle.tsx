@@ -255,7 +255,7 @@ export function ThemeSelect() {
       >
         Switch theme
       </label>
-      <div className="dark:highlight-white/5 relative flex items-center rounded-lg p-2 font-semibold text-slate-700 shadow-sm ring-1 ring-slate-900/10 dark:bg-slate-600 dark:text-slate-200 dark:ring-0">
+      <div className="dark:highlight-white/5 relative flex items-center rounded-lg p-2 font-semibold text-slate-700 shadow-sm ring-1 ring-slate-900/10 dark:bg-slate-600 dark:ring-0">
         <SunIcon className="mr-2 h-6 w-6 dark:hidden" />
         <svg
           viewBox="0 0 24 24"

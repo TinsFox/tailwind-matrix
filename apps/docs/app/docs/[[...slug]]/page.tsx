@@ -48,7 +48,7 @@ function Doclsxav() {
         <div style={{ padding: "15px 20px" }}>
           {nav.map(({ children, title }) => (
             <React.Fragment key={title}>
-              <div className="mt-5 mb-8 font-semibold text-slate-900 dark:text-slate-200 lg:mb-3">
+              <div className="mt-5 mb-8 font-semibold text-slate-900  lg:mb-3">
                 {title}
               </div>
               <ol>

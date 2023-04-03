@@ -29,7 +29,7 @@ export default function DocLayout({ children }: DocsLayoutProps) {
                 />
               </svg>
               <div className="relative">
-                <h3 className="pt-8 text-base font-semibold tracking-tight text-slate-900 dark:text-slate-200 lg:pt-0">
+                <h3 className="pt-8 text-base font-semibold tracking-tight text-slate-900  lg:pt-0">
                   {title}
                 </h3>
                 <div className="prose prose-slate prose-a:relative prose-a:z-10 dark:prose-dark line-clamp-2 mt-2 mb-4">
